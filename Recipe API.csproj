@@ -8,9 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Dto\Category\NewFolder\**" />
     <Compile Remove="Profiles\RecipeDetailDTO\**" />
+    <Content Remove="Dto\Category\NewFolder\**" />
     <Content Remove="Profiles\RecipeDetailDTO\**" />
+    <EmbeddedResource Remove="Dto\Category\NewFolder\**" />
     <EmbeddedResource Remove="Profiles\RecipeDetailDTO\**" />
+    <None Remove="Dto\Category\NewFolder\**" />
     <None Remove="Profiles\RecipeDetailDTO\**" />
   </ItemGroup>
 

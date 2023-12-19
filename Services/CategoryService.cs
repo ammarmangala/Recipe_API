@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Recipe_API.Dto.Category;
+using Recipe_API.Dto.Recipe;
 using Recipe_API.Entities;
 using Template_Web_API.Repositories.Base;
 

@@ -15,19 +15,31 @@ namespace Recipe_API.Services
             _mapper = mapper;
         }
 
-        public CategoryDTO Create(CategoryDTO categoryDTO)
+        public CategoryDTO Create(CategoryDTO dto)
         {
-            throw new NotImplementedException();
+            Recipe recipe = _mapper.Map<Recipe>(dto);
+
+            _mapper.Add(recipe);
+            _categoryService.SaveChanges();
+
+            CategoryDTO result = _mapper.Map<CategoryDTO>(recipe);
+            return result;
         }
 
         public IEnumerable<CategoryDTO> GetAll()
         {
-            throw new NotImplementedException();
+            return _categoryService.GetAll().Select(_mapper.Map<CategoryDTO>);
         }
 
         public CategoryDTO GetById(int id)
         {
-            throw new NotImplementedException();
+            Category category = _categoryService.GetById(id);
+            if (category == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<CategoryDTO>(category);
         }
     }
 }

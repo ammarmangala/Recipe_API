@@ -48,13 +48,13 @@ namespace Recipe_API.Services
 
         public RecipeDTO GetById(int id)
         {
-            Recipe student = _recipeRepository.GetById(id);
-            if (student == null)
+            Recipe recipe = _recipeRepository.GetById(id);
+            if (recipe == null)
             {
                 return null;
             }
 
-            return _mapper.Map<RecipeDTO>(student);
+            return _mapper.Map<RecipeDTO>(recipe);
         }
 
         public RecipeDTO Update(int id, RecipeDTO recipeDTO)

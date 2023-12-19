@@ -1,8 +1,7 @@
 ﻿namespace Recipe_API.Dto.Category
 {
-    public class CategoryDTO
+    public class CreateCategoryDTO
     {
-        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

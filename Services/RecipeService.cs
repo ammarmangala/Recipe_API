@@ -15,6 +15,7 @@ namespace Recipe_API.Services
             _recipeRepository = recipeRepository;
             _mapper = mapper;
         }
+
         public RecipeDTO Create(RecipeDTO dto)
         {
             Recipe recipe = _mapper.Map<Recipe>(dto);
@@ -28,22 +29,47 @@ namespace Recipe_API.Services
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            Recipe toDelete = _recipeRepository.GetById(id);
+            if (toDelete == null)
+            {
+                return false;
+            }
+
+            _recipeRepository.Delete(toDelete);
+            _recipeRepository.SaveChanges();
+
+            return true;
         }
 
         public IEnumerable<RecipeDTO> GetAll()
         {
-            throw new NotImplementedException();
+            return _recipeRepository.GetAll().Select(_mapper.Map<RecipeDTO>);
         }
 
         public RecipeDTO GetById(int id)
         {
-            throw new NotImplementedException();
+            Recipe student = _recipeRepository.GetById(id);
+            if (student == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<RecipeDTO>(student);
         }
 
         public RecipeDTO Update(int id, RecipeDTO recipeDTO)
         {
-            throw new NotImplementedException();
+
+            Recipe toUpdate = _recipeRepository.GetById(recipeDTO.Id);
+
+            if (toUpdate == null)
+            {
+                return null;
+            }
+
+            toUpdate = _mapper.Map(recipeDTO, toUpdate);
+
+            return _mapper.Map<RecipeDTO>(toUpdate);
         }
     }
 }

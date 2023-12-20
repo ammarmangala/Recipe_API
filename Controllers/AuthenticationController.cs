@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Recipe_API.Dto.Authentication;
 using Recipe_API.Dto.Common;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace Recipe_API.Controllers
 {
@@ -42,10 +46,47 @@ namespace Recipe_API.Controllers
                     Status = "Error",
                     Message = "User creation failed! Please check user details and try again."
                 });
-            return Ok(new ResponseDTO { 
-                Status = "Success", 
-                Message = "User created successfully!" 
+            return Ok(new ResponseDTO { Status = "Success", Message = "User created successfully!" });
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginDTO dto)
+        {
+            var existingUser = await _userManager.FindByNameAsync(dto.UserName);
+            if (existingUser != null && await _userManager.CheckPasswordAsync(existingUser, dto.Password))
+            {
+                List<Claim> authClaims = new List<Claim>()
+                {
+                    new Claim(ClaimTypes.Name, existingUser.UserName),
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                };
+
+                var existingClaims = await _userManager.GetClaimsAsync(existingUser);
+                authClaims.AddRange(existingClaims);
+
+                var token = GetToken(authClaims);
+
+
+                return Ok(new
+                {
+                    token = new JwtSecurityTokenHandler().WriteToken(token),
+                    expiration = token.ValidTo
                 });
+            }
+            return Unauthorized(new ResponseDTO { Status = "Error", Message = "Invalid Authentication" });
+        }
+
+        private JwtSecurityToken GetToken(IEnumerable<Claim> authClaims)
+        {
+            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
+            var token = new JwtSecurityToken(
+                issuer: _configuration["JWT:ValidIssuer"],
+                audience: _configuration["JWT:ValidAudience"],
+                expires: DateTime.Now.AddHours(3),
+                claims: authClaims,
+                signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
+                );
+            return token;
         }
     }
 }

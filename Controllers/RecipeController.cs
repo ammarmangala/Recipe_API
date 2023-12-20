@@ -61,14 +61,12 @@ namespace Recipe_API.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            if (_recipeService.Delete(id))
-            {
-                return NoContent();
-            }
-            else
+            bool isDeleted = _recipeService.Delete(id);
+            if (!isDeleted)
             {
                 return NotFound();
             }
+            return NoContent();
         }
     }
 }

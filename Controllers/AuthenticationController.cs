@@ -42,7 +42,10 @@ namespace Recipe_API.Controllers
                     Status = "Error",
                     Message = "User creation failed! Please check user details and try again."
                 });
-            return Ok(new ResponseDTO { Status = "Success", Message = "User created successfully!" });
+            return Ok(new ResponseDTO { 
+                Status = "Success", 
+                Message = "User created successfully!" 
+                });
         }
     }
 }

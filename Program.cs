@@ -51,6 +51,9 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+
+builder.Services.AddAuthorization(opts => opts.AddPolicy("AdminOnly", builder => builder.RequireClaim("isAdmin")));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

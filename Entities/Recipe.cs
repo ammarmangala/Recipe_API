@@ -8,6 +8,7 @@ namespace Recipe_API.Entities
         public DateTime Time { get; set; }
         public enum Difficulty { Easy, Intermediate, Advanced }
         public int CategoryId { get; set; }
+        public ICollection<Ingredient> Ingredients { get; set; }
 
         public Category Categories { get; set; }
 

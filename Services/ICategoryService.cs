@@ -6,6 +6,7 @@ namespace Recipe_API.Services
     {
         CategoryDTO GetById(int id);
         CategoryDTO Create(CategoryDTO categoryDTO);
+        CategoryDTO Update(CategoryDTO categoryDTO);
         IEnumerable<CategoryDTO> GetAll();
     }
 }

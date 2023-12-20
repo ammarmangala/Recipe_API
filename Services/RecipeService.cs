@@ -71,5 +71,10 @@ namespace Recipe_API.Services
 
             return _mapper.Map<RecipeDTO>(toUpdate);
         }
+
+        IEnumerable<Recipe> IRecipeService.GetAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

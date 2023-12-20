@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Recipe_API.Dto.Category;
-using Recipe_API.Dto.Recipe;
 using Recipe_API.Entities;
 using Template_Web_API.Repositories.Base;
 
@@ -18,12 +17,12 @@ namespace Recipe_API.Services
 
         public CategoryDTO Create(CategoryDTO dto)
         {
-            Recipe recipe = _mapper.Map<Recipe>(dto);
+            Category category = _mapper.Map<Category>(dto);
 
-            _mapper.Add(recipe);
+            _mapper.Add(category);
             _categoryService.SaveChanges();
 
-            CategoryDTO result = _mapper.Map<CategoryDTO>(recipe);
+            CategoryDTO result = _mapper.Map<CategoryDTO>(category);
             return result;
         }
 
@@ -41,6 +40,20 @@ namespace Recipe_API.Services
             }
 
             return _mapper.Map<CategoryDTO>(category);
+        }
+
+        public CategoryDTO Update(CategoryDTO categoryDTO)
+        {
+            Category toUpdate = _categoryService.GetById(categoryDTO.Id);
+
+            if (toUpdate == null)
+            {
+                return null;
+            }
+
+            toUpdate = _mapper.Map(categoryDTO, toUpdate);
+
+            return _mapper.Map<CategoryDTO>(toUpdate);
         }
     }
 }

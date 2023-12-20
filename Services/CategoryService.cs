@@ -19,7 +19,7 @@ namespace Recipe_API.Services
         {
             Category category = _mapper.Map<Category>(dto);
 
-            _mapper.Add(category);
+            _categoryService.Add(category);
             _categoryService.SaveChanges();
 
             CategoryDTO result = _mapper.Map<CategoryDTO>(category);

@@ -20,7 +20,7 @@ namespace Recipe_API.Services
         {
             Recipe recipe = _mapper.Map<Recipe>(dto);
 
-            _mapper.Add(recipe);
+            _recipeRepository.Add(recipe);
             _recipeRepository.SaveChanges();
 
             RecipeDTO result = _mapper.Map<RecipeDTO>(recipe);
@@ -72,9 +72,5 @@ namespace Recipe_API.Services
             return _mapper.Map<RecipeDTO>(toUpdate);
         }
 
-        IEnumerable<Recipe> IRecipeService.GetAll()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -16,7 +16,7 @@ namespace Recipe_API.Services
             _mapper = mapper;
         }
 
-        public RecipeDTO Create(RecipeDTO dto)
+        public RecipeDTO Create(CreateRecipeDTO dto)
         {
             Recipe recipe = _mapper.Map<Recipe>(dto);
 
@@ -55,21 +55,6 @@ namespace Recipe_API.Services
             }
 
             return _mapper.Map<RecipeDTO>(recipe);
-        }
-
-        public RecipeDTO Update(int id, RecipeDTO recipeDTO)
-        {
-
-            Recipe toUpdate = _recipeRepository.GetById(recipeDTO.Id);
-
-            if (toUpdate == null)
-            {
-                return null;
-            }
-
-            toUpdate = _mapper.Map(recipeDTO, toUpdate);
-
-            return _mapper.Map<RecipeDTO>(toUpdate);
         }
 
     }

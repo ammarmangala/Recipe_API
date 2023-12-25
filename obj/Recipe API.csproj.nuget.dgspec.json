@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ammar\\Documents\\Template Web API\\Template Web API\\Template Web API\\Recipe API.csproj": {}
+    "C:\\Users\\ammar\\Documents\\Repositories\\C#\\Recipe API\\Recipe API\\Recipe API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ammar\\Documents\\Template Web API\\Template Web API\\Template Web API\\Recipe API.csproj": {
+    "C:\\Users\\ammar\\Documents\\Repositories\\C#\\Recipe API\\Recipe API\\Recipe API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ammar\\Documents\\Template Web API\\Template Web API\\Template Web API\\Recipe API.csproj",
+        "projectUniqueName": "C:\\Users\\ammar\\Documents\\Repositories\\C#\\Recipe API\\Recipe API\\Recipe API.csproj",
         "projectName": "Recipe API",
-        "projectPath": "C:\\Users\\ammar\\Documents\\Template Web API\\Template Web API\\Template Web API\\Recipe API.csproj",
+        "projectPath": "C:\\Users\\ammar\\Documents\\Repositories\\C#\\Recipe API\\Recipe API\\Recipe API.csproj",
         "packagesPath": "C:\\Users\\ammar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ammar\\Documents\\Template Web API\\Template Web API\\Template Web API\\obj\\",
+        "outputPath": "C:\\Users\\ammar\\Documents\\Repositories\\C#\\Recipe API\\Recipe API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -34,39 +34,27 @@ namespace Recipe_API.Controllers
             return Ok(recipe);
         }
 
+
         [HttpPost("")]
-        public ActionResult Create(RecipeDTO recipeDTO)
+        public ActionResult Create(CreateRecipeDTO dto)
         {
-            RecipeDTO recipe = _recipeService.Create(recipeDTO);
-            return CreatedAtAction(nameof(Get), new { id = recipe.Id }, recipe);
+            RecipeDTO createdRecipe = _recipeService.Create(dto);
+            return CreatedAtAction(nameof(Get), new { id = createdRecipe.Id }, createdRecipe);
         }
-
-
-        [HttpPut("{id}")]
-        public ActionResult Update(int id, RecipeDTO recipeDTO)
-        {
-            if (id != recipeDTO.Id)
-            {
-                return BadRequest();
-            }
-            RecipeDTO recipe = _recipeService.Update(id, recipeDTO);
-            if (recipe == null)
-            {
-                return NotFound();
-            }
-            return NoContent();
-        }
-
 
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
             bool isDeleted = _recipeService.Delete(id);
-            if (!isDeleted)
+            if (isDeleted)
+            {
+                return NoContent();
+            }
+            else
             {
                 return NotFound();
+
             }
-            return NoContent();
         }
     }
 }

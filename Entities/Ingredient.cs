@@ -1,7 +1,9 @@
-﻿using Template_Web_API.Entities.Base;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Template_Web_API.Entities.Base;
 
 namespace Recipe_API.Entities
 {
+    [Table("Ingredients")]
     public class Ingredient : BaseEntity
     {
         public string Name { get; set; }

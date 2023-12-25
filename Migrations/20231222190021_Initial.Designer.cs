@@ -12,7 +12,7 @@ using Template_Web_API.Data;
 namespace Recipe_API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231220090413_Initial")]
+    [Migration("20231222190021_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,7 +38,34 @@ namespace Recipe_API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Soepen"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Vegetarisch"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Voorgerecht"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Hoofdgerecht"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Dessert"
+                        });
                 });
 
             modelBuilder.Entity("Recipe_API.Entities.Ingredient", b =>
@@ -67,7 +94,7 @@ namespace Recipe_API.Migrations
 
                     b.HasIndex("RecipeId");
 
-                    b.ToTable("Ingredient");
+                    b.ToTable("Ingredients");
                 });
 
             modelBuilder.Entity("Recipe_API.Entities.Recipe", b =>
@@ -79,6 +106,9 @@ namespace Recipe_API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Difficulty")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Time")
@@ -97,22 +127,24 @@ namespace Recipe_API.Migrations
 
             modelBuilder.Entity("Recipe_API.Entities.Ingredient", b =>
                 {
-                    b.HasOne("Recipe_API.Entities.Recipe", null)
+                    b.HasOne("Recipe_API.Entities.Recipe", "Recipes")
                         .WithMany("Ingredients")
                         .HasForeignKey("RecipeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Recipes");
                 });
 
             modelBuilder.Entity("Recipe_API.Entities.Recipe", b =>
                 {
-                    b.HasOne("Recipe_API.Entities.Category", "Categories")
+                    b.HasOne("Recipe_API.Entities.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Categories");
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("Recipe_API.Entities.Recipe", b =>

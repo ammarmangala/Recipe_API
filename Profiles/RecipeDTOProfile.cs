@@ -10,7 +10,7 @@ namespace Recipe_API.Profiles
         {
             CreateMap<Recipe, RecipeDTO>();
             CreateMap<CreateRecipeDTO, Recipe>();
-            CreateMap<UpdateRecipeDTO, Recipe>();
+            CreateMap<DeleteRecipeDTO, Recipe>();
         }
     }
 }

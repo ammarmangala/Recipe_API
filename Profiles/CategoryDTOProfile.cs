@@ -10,7 +10,6 @@ namespace Recipe_API.Profiles
         {
             CreateMap<Category, CategoryDTO>();
             CreateMap<CreateCategoryDTO, Category>();
-            CreateMap<UpdateCategoryDTO, Category>();
         }
     }
 }

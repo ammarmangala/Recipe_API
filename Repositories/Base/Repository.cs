@@ -52,5 +52,7 @@ namespace Template_Web_API.Repositories.Base
         {
             _context.Set<T>().Update(entity);
         }
+
+        
     }
 }

@@ -7,15 +7,15 @@ namespace Recipe_API.Services
 {
     public class CategoryService : ICategoryService
     {
-        IRepository<Category> _categoryService;
-        IMapper _mapper;
+        private IRepository<Category> _categoryService;
+        private IMapper _mapper;
         public CategoryService(IRepository<Category> categoryRepository, IMapper mapper)
         {
             _categoryService = categoryRepository;
             _mapper = mapper;
         }
 
-        public CategoryDTO Create(CategoryDTO dto)
+        public CategoryDTO Create(CreateCategoryDTO dto)
         {
             Category category = _mapper.Map<Category>(dto);
 
@@ -25,6 +25,7 @@ namespace Recipe_API.Services
             CategoryDTO result = _mapper.Map<CategoryDTO>(category);
             return result;
         }
+
 
         public IEnumerable<CategoryDTO> GetAll()
         {
@@ -40,20 +41,6 @@ namespace Recipe_API.Services
             }
 
             return _mapper.Map<CategoryDTO>(category);
-        }
-
-        public CategoryDTO Update(CategoryDTO categoryDTO)
-        {
-            Category toUpdate = _categoryService.GetById(categoryDTO.Id);
-
-            if (toUpdate == null)
-            {
-                return null;
-            }
-
-            toUpdate = _mapper.Map(categoryDTO, toUpdate);
-
-            return _mapper.Map<CategoryDTO>(toUpdate);
         }
     }
 }

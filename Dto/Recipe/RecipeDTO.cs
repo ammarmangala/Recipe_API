@@ -2,12 +2,12 @@
 
 namespace Recipe_API.Dto.Recipe
 {
-    public class RecipeDTO 
+    public class RecipeDTO
     {
         public int Id { get; set; }
         public string Title { get; set; }
         public DateTime Time { get; set; }
-        public enum Difficulty { Easy, Intermediate, Advanced }
+        public Difficulty Difficulty { get; set; }
         public int CategoryId { get; set; }
 
     }

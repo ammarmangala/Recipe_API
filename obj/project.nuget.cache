@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "R+kSYJY0sysAaNpMUPMM7Xsu5YJUZdICFgXTqMB+mZfOGYiry/w7mZV3ehCrt6P1dwRULr8CoM3vOfy8/vXBFw==",
+  "dgSpecHash": "WApbgaGXcMKpejd4ZsrvjgM2Fc2B1qjKIAqnx0jipxIQkSLUMzkm5If+f9yU/vwwTyK94/0qBAmkvefUyvdJYg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ammar\\Documents\\Template Web API\\Template Web API\\Template Web API\\Recipe API.csproj",
+  "projectFilePath": "C:\\Users\\ammar\\Documents\\Repositories\\C#\\Recipe API\\Recipe API\\Recipe API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ammar\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\ammar\\.nuget\\packages\\automapper.collection\\9.0.0\\automapper.collection.9.0.0.nupkg.sha512",

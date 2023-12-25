@@ -34,10 +34,10 @@ namespace Recipe_API.Controllers
         }
 
         [HttpPost("")]
-        public ActionResult Create(CategoryDTO categoryDTO)
+        public ActionResult Create(CreateCategoryDTO dto)
         {
-            CategoryDTO category = _categoryService.Create(categoryDTO);
-            return CreatedAtAction(nameof(Get), new { id = category.Id }, category);
+            CategoryDTO createdCategory = _categoryService.Create(dto);
+            return CreatedAtAction(nameof(Get), new { id = createdCategory.Id }, createdCategory);
         }
     }
 }

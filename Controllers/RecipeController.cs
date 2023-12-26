@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Recipe_API.Dto.Recipe;
 using Recipe_API.Services;
 
@@ -36,6 +37,7 @@ namespace Recipe_API.Controllers
 
 
         [HttpPost("")]
+        [Authorize(Policy = "AdminOnly")]
         public ActionResult Create(CreateRecipeDTO dto)
         {
             RecipeDTO createdRecipe = _recipeService.Create(dto);
@@ -43,6 +45,7 @@ namespace Recipe_API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Policy = "AdminOnly")]
         public ActionResult Delete(int id, DeleteRecipeDTO dto)
         {
             bool isDeleted = _recipeService.Delete(id);

@@ -35,6 +35,7 @@ namespace Recipe_API.Controllers
         }
 
         [HttpPost("")]
+        [Authorize(Policy = "AdminOnly")]
         public ActionResult Create(CreateCategoryDTO dto)
         {
             CategoryDTO createdCategory = _categoryService.Create(dto);

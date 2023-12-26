@@ -37,7 +37,7 @@ namespace Recipe_API.Controllers
             {
                 Email = dto.UserName,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                UserName = dto.UserName
+                UserName = dto.UserName,  
             };
             var result = await _userManager.CreateAsync(user, dto.Password);
             if (!result.Succeeded)

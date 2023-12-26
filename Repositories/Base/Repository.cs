@@ -1,8 +1,8 @@
 ﻿using System.Linq.Expressions;
-using Template_Web_API.Data;
-using Template_Web_API.Entities.Base;
+using Recipe_API.Data;
+using Recipe_API.Entities.Base;
 
-namespace Template_Web_API.Repositories.Base
+namespace Recipe_API.Repositories.Base
 {
     public class Repository<T> : IRepository<T> where T : BaseEntity
     {

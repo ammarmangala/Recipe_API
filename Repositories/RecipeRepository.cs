@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Recipe_API.Entities;
-using Template_Web_API.Data;
+using Recipe_API.Data;
 
 namespace Recipe_API.Repositories
 {

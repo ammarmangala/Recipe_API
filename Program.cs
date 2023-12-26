@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Recipe_API.Data;
+using Recipe_API.Repositories.Base;
 using Recipe_API.Services;
 using System.Text;
-using Template_Web_API.Data;
-using Template_Web_API.Repositories.Base;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,15 @@ builder.Services.AddSwaggerGen();
 var connString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(connString));
 
+// Registreer ApplicationDbContext-klasse
+builder.Services.AddDbContext<ApplicationDbContext>(
+options => options.UseSqlServer(builder.Configuration.GetConnectionString("default")));
 
+
+// Set-up voor Identity-framework
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+.AddEntityFrameworkStores<Recipe_API.Data.ApplicationDbContext>()
+.AddDefaultTokenProviders();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 

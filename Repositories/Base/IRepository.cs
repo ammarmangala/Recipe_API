@@ -1,7 +1,7 @@
-﻿using System.Linq.Expressions;
-using Template_Web_API.Entities.Base;
+﻿using Recipe_API.Entities.Base;
+using System.Linq.Expressions;
 
-namespace Template_Web_API.Repositories.Base
+namespace Recipe_API.Repositories.Base
 {
 
     public interface IRepository<T> where T : BaseEntity

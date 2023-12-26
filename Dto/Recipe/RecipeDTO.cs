@@ -1,6 +1,4 @@
-﻿using Template_Web_API.Entities.Base;
-
-namespace Recipe_API.Dto.Recipe
+﻿namespace Recipe_API.Dto.Recipe
 {
     public class RecipeDTO
     {

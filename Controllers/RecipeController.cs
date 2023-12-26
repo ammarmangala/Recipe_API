@@ -43,7 +43,7 @@ namespace Recipe_API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, DeleteRecipeDTO dto)
         {
             bool isDeleted = _recipeService.Delete(id);
             if (isDeleted)

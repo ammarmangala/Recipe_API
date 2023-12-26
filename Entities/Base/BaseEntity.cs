@@ -1,4 +1,4 @@
-﻿namespace Template_Web_API.Entities.Base
+﻿namespace Recipe_API.Entities.Base
 {
     public class BaseEntity
     {

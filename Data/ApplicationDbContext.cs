@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Recipe_API.Entities;
 
-namespace Template_Web_API.Data
+namespace Recipe_API.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
@@ -18,6 +20,8 @@ namespace Template_Web_API.Data
                 new Category { Id = 4, Name = "Hoofdgerecht" },
                 new Category { Id = 5, Name = "Dessert" }
             );
+            base.OnModelCreating(modelBuilder);
         }
+
     }
 }

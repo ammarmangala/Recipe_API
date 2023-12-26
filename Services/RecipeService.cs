@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Recipe_API.Dto.Recipe;
 using Recipe_API.Entities;
-using Template_Web_API.Repositories.Base;
+using Recipe_API.Repositories.Base;
 
 namespace Recipe_API.Services
 {
